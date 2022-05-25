@@ -40,8 +40,6 @@ def create_record(conn, table, data):
 
 def main():
     database = 'test.db'
-    create_table()
-
     conn = create_connection(database)
 
     with conn:
