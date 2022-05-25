@@ -40,13 +40,16 @@ def create_record(conn, table, data):
 
 def main():
     database = 'test.db'
+
     conn = create_connection(database)
 
     with conn:
-        if check_table_exists(conn, 'Test'):
-            print(f'Table: Test exists')
+        if not check_table_exists(conn, 'People'):
+            query = """ """
+            create_table(conn, 'People', query)
         else:
-            print('No Test table exists')
+            print('People table does not exist')
+
 
 if __name__=='__main__':
     main()
