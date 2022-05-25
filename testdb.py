@@ -19,7 +19,7 @@ def check_table_exists(conn, table):
         return False
 
 def create_table(conn, table, query):
-    if check_table_exists(conn, 'Test'):
+    if check_table_exists(conn, 'People'):
         print(f'{table} Table created')
     else:
         print(f'ERROR: {table} table was not created')
@@ -45,7 +45,13 @@ def main():
 
     with conn:
         if not check_table_exists(conn, 'People'):
-            query = """ """
+            query = """CREATE TABLE "People" (
+	                "id"	INTEGER NOT NULL UNIQUE,
+	                "firstName"	TEXT NOT NULL,
+	                "surName"	TEXT NOT NULL,
+	                "age"	INTEGER NOT NULL,
+	                PRIMARY KEY("id" AUTOINCREMENT)
+                    """
             create_table(conn, 'People', query)
         else:
             print('People table does not exist')
